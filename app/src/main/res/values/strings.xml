@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">BikeShop</string>
+    <string name="button_addBike">Add Bike</string>
+    <string name="hint_bikeTitle">Bike Title</string>
+    <string name="hint_bikeSize">Size</string>
+    <string name="hint_bikeStyle">Style</string>
+    <string name="hint_bikeGender">Gender</string>
+    <string name="hint_bikePrice">Price</string>
+    <string name="hint_bikeCondition">Condition</string>
+    <string name="hint_bikeComment">Comment</string>
+    <string name="menu_addBike">Add</string>
+    <string name="menu_cancelBike">Cancel</string>
+    <string name="enter_bike_title"> Please enter a Bike Title </string>
+    <string name="save_bike"> Save Bike </string>
+    <string name="button_addImage"> Add Image </string>
+    <string name="select_bike_image">Select Bike Image</string>
+    <string name="change_bike_image">Change Image</string>
+    <string name="bike_image">Bike image</string>
+    <string name="button_location">Set Location</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="menu_deleteBike">Delete</string>
+</resources>
