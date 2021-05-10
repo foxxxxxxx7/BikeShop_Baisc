@@ -20,7 +20,6 @@ import org.wit.bikeshop.models.Location
 
 class BikeShopActivity : AppCompatActivity(), AnkoLogger {
 
-    val LOCATION_REQUEST2 = 3
     val LOCATION_REQUEST = 2
     val IMAGE_REQUEST = 1
     var edit = false
@@ -59,23 +58,26 @@ class BikeShopActivity : AppCompatActivity(), AnkoLogger {
                 location.zoom = bike.zoom
             }
             startActivityForResult(
-                intentFor<MapsActivity>().putExtra("Pick Up Location", location),
+                intentFor<MapsActivity>().putExtra("location", location),
                 LOCATION_REQUEST
             )
         }
 
         bikeLocation2.setOnClickListener {
-            val location2 = Location(52.092954, -7.622118, 15f)
+            val location2 = Location(52.093074, -7.622118, 15f)
             if (bike.zoom != 0f) {
                 location2.lat = bike.lat
                 location2.lng = bike.lng
                 location2.zoom = bike.zoom
             }
             startActivityForResult(
-                intentFor<MapsActivity>().putExtra("Drop Off Location", location2),
-                LOCATION_REQUEST2
+                intentFor<MapsActivity>().putExtra("location", location2),
+                LOCATION_REQUEST
             )
         }
+
+
+
 
 
         btnAdd.setOnClickListener() {
