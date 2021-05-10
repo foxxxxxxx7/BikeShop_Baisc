@@ -44,8 +44,9 @@ class BikeShopMemStore : BikeShopStore, AnkoLogger {
     }
 
     fun logAll() {
-        bikes.forEach{ info("${it}") }
+        bikes.forEach { info("${it}") }
     }
+
     override fun delete(bike: BikeShopModel) {
         bikes.remove(bike)
     }

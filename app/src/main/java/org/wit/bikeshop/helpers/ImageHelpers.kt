@@ -39,8 +39,10 @@ fun readImage(activity: Activity, resultCode: Int, data: Intent?): Bitmap? {
     if (resultCode == Activity.RESULT_OK && data != null && data.data != null) {
         try {
             bitmap = ImageDecoder.decodeBitmap(
-                    ImageDecoder.createSource(activity.contentResolver, data.data!!
-                    ))
+                ImageDecoder.createSource(
+                    activity.contentResolver, data.data!!
+                )
+            )
         } catch (e: IOException) {
             e.printStackTrace()
         }

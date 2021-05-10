@@ -68,6 +68,7 @@ class BikeShopJSONStore : BikeShopStore, AnkoLogger {
         val jsonString = read(context, JSON_FILE)
         bikes = Gson().fromJson(jsonString, listType)
     }
+
     override fun delete(bike: BikeShopModel) {
         bikes.remove(bike)
         serialize()

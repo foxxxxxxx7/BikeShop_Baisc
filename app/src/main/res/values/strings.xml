@@ -16,7 +16,8 @@
     <string name="select_bike_image">Select Bike Image</string>
     <string name="change_bike_image">Change Image</string>
     <string name="bike_image">Bike image</string>
-    <string name="button_location">Set Location</string>
+    <string name="button_location">Pick Up Location</string>
+    <string name="button_location2">Drop Off Location</string>
     <string name="title_activity_maps">Map</string>
     <string name="menu_deleteBike">Delete</string>
 </resources>

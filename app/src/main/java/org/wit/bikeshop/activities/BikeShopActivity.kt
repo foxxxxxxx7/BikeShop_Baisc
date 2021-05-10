@@ -20,6 +20,7 @@ import org.wit.bikeshop.models.Location
 
 class BikeShopActivity : AppCompatActivity(), AnkoLogger {
 
+    val LOCATION_REQUEST2 = 3
     val LOCATION_REQUEST = 2
     val IMAGE_REQUEST = 1
     var edit = false
@@ -50,50 +51,63 @@ class BikeShopActivity : AppCompatActivity(), AnkoLogger {
             btnAdd.setText(R.string.save_bike)
         }
 
-            bikeLocation.setOnClickListener {
-                val location = Location(52.260727672924894, -7.106110453605653, 15f)
-                if (bike.zoom != 0f) {
-                    location.lat = bike.lat
-                    location.lng = bike.lng
-                    location.zoom = bike.zoom
-                }
-                startActivityForResult(
-                    intentFor<MapsActivity>().putExtra("location", location),
-                    LOCATION_REQUEST
-                )
+        bikeLocation.setOnClickListener {
+            val location = Location(52.260727672924894, -7.106110453605653, 15f)
+            if (bike.zoom != 0f) {
+                location.lat = bike.lat
+                location.lng = bike.lng
+                location.zoom = bike.zoom
             }
-
-
-            btnAdd.setOnClickListener() {
-                bike.title = bikeTitle.text.toString()
-                bike.size = bikeSize.text.toString()
-                bike.style = bikeStyle.text.toString()
-                bike.gender = bikeGender.text.toString()
-                bike.price = bikePrice.text.toString()
-                bike.condition = bikeCondition.text.toString()
-                bike.comment = bikeComment.text.toString()
-                if (bike.title.isEmpty()) {
-                    toast(R.string.enter_bike_title)
-                } else {
-                    if (edit) {
-                        app.bikes.update(bike.copy())
-                    } else {
-                        app.bikes.create(bike.copy())
-                    }
-                }
-                info("Add Button Pressed: $bikeTitle")
-                setResult(AppCompatActivity.RESULT_OK)
-                finish()
-            }
-
-            toolbarAdd.title = title
-            setSupportActionBar(toolbarAdd)
-
-            chooseImage.setOnClickListener {
-                showImagePicker(this, IMAGE_REQUEST)
-            }
-
+            startActivityForResult(
+                intentFor<MapsActivity>().putExtra("Pick Up Location", location),
+                LOCATION_REQUEST
+            )
         }
+
+        bikeLocation2.setOnClickListener {
+            val location2 = Location(52.092954, -7.622118, 15f)
+            if (bike.zoom != 0f) {
+                location2.lat = bike.lat
+                location2.lng = bike.lng
+                location2.zoom = bike.zoom
+            }
+            startActivityForResult(
+                intentFor<MapsActivity>().putExtra("Drop Off Location", location2),
+                LOCATION_REQUEST2
+            )
+        }
+
+
+        btnAdd.setOnClickListener() {
+            bike.title = bikeTitle.text.toString()
+            bike.size = bikeSize.text.toString()
+            bike.style = bikeStyle.text.toString()
+            bike.gender = bikeGender.text.toString()
+            bike.price = bikePrice.text.toString()
+            bike.condition = bikeCondition.text.toString()
+            bike.comment = bikeComment.text.toString()
+            if (bike.title.isEmpty()) {
+                toast(R.string.enter_bike_title)
+            } else {
+                if (edit) {
+                    app.bikes.update(bike.copy())
+                } else {
+                    app.bikes.create(bike.copy())
+                }
+            }
+            info("Add Button Pressed: $bikeTitle")
+            setResult(AppCompatActivity.RESULT_OK)
+            finish()
+        }
+
+        toolbarAdd.title = title
+        setSupportActionBar(toolbarAdd)
+
+        chooseImage.setOnClickListener {
+            showImagePicker(this, IMAGE_REQUEST)
+        }
+
+    }
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

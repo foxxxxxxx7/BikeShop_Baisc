@@ -22,11 +22,15 @@ interface BikeListener {
 }
 
 
-class BikeShopAdapter constructor(private var bikes: List<BikeShopModel>,
-                                   private val listener: BikeListener) : RecyclerView.Adapter<BikeShopAdapter.MainHolder>() {
+class BikeShopAdapter constructor(
+    private var bikes: List<BikeShopModel>,
+    private val listener: BikeListener
+) : RecyclerView.Adapter<BikeShopAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
-        return MainHolder(LayoutInflater.from(parent?.context).inflate(R.layout.card_bikeshop, parent, false))
+        return MainHolder(
+            LayoutInflater.from(parent?.context).inflate(R.layout.card_bikeshop, parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
@@ -38,7 +42,7 @@ class BikeShopAdapter constructor(private var bikes: List<BikeShopModel>,
 
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(bike: BikeShopModel,  listener : BikeListener) {
+        fun bind(bike: BikeShopModel, listener: BikeListener) {
             itemView.bikeTitle.text = bike.title
             itemView.bikeSize.text = bike.size
             itemView.bikeStyle.text = bike.style

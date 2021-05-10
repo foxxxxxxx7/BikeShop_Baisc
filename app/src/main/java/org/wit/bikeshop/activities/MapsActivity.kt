@@ -15,7 +15,8 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import org.wit.bikeshop.models.Location
 
-class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDragListener, GoogleMap.OnMarkerClickListener {
+class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDragListener,
+    GoogleMap.OnMarkerClickListener {
 
     private lateinit var map: GoogleMap
     var location = Location()
@@ -51,7 +52,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         setContentView(R.layout.activity_maps)
         location = intent.extras?.getParcelable<Location>("location")!!
         val mapFragment = supportFragmentManager
-                .findFragmentById(R.id.map) as SupportMapFragment
+            .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
 
@@ -59,10 +60,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         map = googleMap
         val loc = LatLng(location.lat, location.lng)
         val options = MarkerOptions()
-                .title("Bike")
-                .snippet("GPS : " + loc.toString())
-                .draggable(true)
-                .position(loc)
+            .title("Bike")
+            .snippet("GPS : " + loc.toString())
+            .draggable(true)
+            .position(loc)
         map.setOnMarkerClickListener(this)
         map.setOnMarkerDragListener(this)
         map.addMarker(options)
