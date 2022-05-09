@@ -25,4 +25,10 @@
             <item name="android:textColorPrimary">@color/black</item>
         </style>
 
+    <style name="Theme.BikeShop.Splash">
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorOnPrimary</item>
+    </style>
+
+
 </resources>
