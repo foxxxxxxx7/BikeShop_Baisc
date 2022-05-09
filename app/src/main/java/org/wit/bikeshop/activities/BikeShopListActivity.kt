@@ -13,7 +13,7 @@ import org.jetbrains.anko.startActivityForResult
 
 import org.wit.bikeshop.R
 import org.wit.bikeshop.main.MainApp
-import org.wit.bikeshop.models.BikeShopModel
+import org.wit.bikeshop.models.BikeModel
 
 
 /* This is the class declaration. It is a class called BikeShopListActivity that inherits from
@@ -83,7 +83,7 @@ class BikeShopListActivity : AppCompatActivity(), BikeListener {
      * @param data The data returned from the activity.
      */
      */
-    override fun onBikeClick(bike: BikeShopModel) {
+    override fun onBikeClick(bike: BikeModel) {
     /**
      * > The function `loadBikes()` is private, and it calls the `showBikes()` function, passing in the
      * result of the `findAll()` function, which is called on the `bikes` property of the `app` object
@@ -117,7 +117,7 @@ class BikeShopListActivity : AppCompatActivity(), BikeListener {
      * @param bikes List<BikeShopModel> - this is the list of bikes that will be displayed in the
      * recycler view.
      */
-    fun showBikes(bikes: List<BikeShopModel>) {
+    fun showBikes(bikes: List<BikeModel>) {
         recyclerView.adapter = BikeShopAdapter(bikes, this)
         recyclerView.adapter?.notifyDataSetChanged()
     }

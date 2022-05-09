@@ -15,7 +15,7 @@ import org.wit.bikeshop.helpers.readImage
 import org.wit.bikeshop.helpers.readImageFromPath
 import org.wit.bikeshop.helpers.showImagePicker
 import org.wit.bikeshop.main.MainApp
-import org.wit.bikeshop.models.BikeShopModel
+import org.wit.bikeshop.models.BikeModel
 import org.wit.bikeshop.models.Location
 
 /* This is the start of the BikeShopActivity class. It is a subclass of AppCompatActivity and
@@ -26,7 +26,7 @@ class BikeShopActivity : AppCompatActivity(), AnkoLogger {
     val LOCATION_REQUEST = 2
     val IMAGE_REQUEST = 1
     var edit = false
-    var bike = BikeShopModel()
+    var bike = BikeModel()
     lateinit var app: MainApp
 
 
@@ -46,7 +46,7 @@ class BikeShopActivity : AppCompatActivity(), AnkoLogger {
         It also sets the text of the btnAdd to save_bike. */
         if (intent.hasExtra("bike_edit")) {
             edit = true
-            bike = intent.extras?.getParcelable<BikeShopModel>("bike_edit")!!
+            bike = intent.extras?.getParcelable<BikeModel>("bike_edit")!!
             bikeTitle.setText(bike.title)
             bikeSize.setText(bike.size)
             bikeStyle.setText(bike.style)

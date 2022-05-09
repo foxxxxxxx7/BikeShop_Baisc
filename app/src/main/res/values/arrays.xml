@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="styleArray">
+        <item>City Bike</item>
+        <item>Hybrid Bike</item>
+        <item>Mountain Bike</item>
+        <item>Road Bike</item>
+        <item>Racing Bike</item>
+        <item>Electric Bike</item>
+    </array>
+
+    <array name="sizeArray">
+        <item>Small Kids</item>
+        <item>Large Kids</item>
+        <item>Extra Small</item>
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
+        <item>Extra Large</item>
+    </array>
+
+    <array name="genderArray">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Unisex</item>
+    </array>
+
+    <array name="conditionArray">
+        <item>Poor</item>
+        <item>Fair</item>
+        <item>Good</item>
+        <item>Excellent</item>
+        <item>Like New</item>
+    </array>
+
+</resources>

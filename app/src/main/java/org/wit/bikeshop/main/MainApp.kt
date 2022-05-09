@@ -4,8 +4,6 @@ import android.app.Application
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.wit.bikeshop.models.BikeShopJSONStore
-import org.wit.bikeshop.models.BikeShopMemStore
-import org.wit.bikeshop.models.BikeShopModel
 import org.wit.bikeshop.models.BikeShopStore
 
 /* This is the main application class. It is a subclass of the Android Application class. It also

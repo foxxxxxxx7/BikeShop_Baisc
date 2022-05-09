@@ -11,7 +11,7 @@ import java.util.*
 /* This is declaring the variables that will be used in the class. */
 val JSON_FILE = "bikes.json"
 val gsonBuilder = GsonBuilder().setPrettyPrinting().create()
-val listType = object : TypeToken<java.util.ArrayList<BikeShopModel>>() {}.type
+val listType = object : TypeToken<java.util.ArrayList<BikeModel>>() {}.type
 
 /**
  * This function generates a random id.
@@ -26,7 +26,7 @@ fun generateRandomId(): Long {
 class BikeShopJSONStore : BikeShopStore, AnkoLogger {
 
     val context: Context
-    var bikes = mutableListOf<BikeShopModel>()
+    var bikes = mutableListOf<BikeModel>()
 
     /* This is the constructor for the class. It is setting the context and checking if the file
     exists. If it does, it deserializes the file. */
@@ -42,7 +42,7 @@ class BikeShopJSONStore : BikeShopStore, AnkoLogger {
      *
      * @return A list of BikeShopModel objects
      */
-    override fun findAll(): MutableList<BikeShopModel> {
+    override fun findAll(): MutableList<BikeModel> {
         return bikes
     }
 
@@ -51,7 +51,7 @@ class BikeShopJSONStore : BikeShopStore, AnkoLogger {
      *
      * @param bike BikeShopModel - this is the object that is being created.
      */
-    override fun create(bike: BikeShopModel) {
+    override fun create(bike: BikeModel) {
         bike.id = generateRandomId()
         bikes.add(bike)
         serialize()
@@ -64,9 +64,9 @@ class BikeShopJSONStore : BikeShopStore, AnkoLogger {
      *
      * @param bike BikeShopModel - this is the bike that is being updated.
      */
-    override fun update(bike: BikeShopModel) {
-        val bikesList = findAll() as ArrayList<BikeShopModel>
-        var foundBike: BikeShopModel? = bikesList.find { p -> p.id == bike.id }
+    override fun update(bike: BikeModel) {
+        val bikesList = findAll() as ArrayList<BikeModel>
+        var foundBike: BikeModel? = bikesList.find { p -> p.id == bike.id }
         if (foundBike != null) {
             foundBike.title = bike.title
             foundBike.size = bike.size
@@ -105,7 +105,7 @@ class BikeShopJSONStore : BikeShopStore, AnkoLogger {
      *
      * @param bike BikeShopModel - this is the bike that we want to delete from the list
      */
-    override fun delete(bike: BikeShopModel) {
+    override fun delete(bike: BikeModel) {
         bikes.remove(bike)
         serialize()
     }

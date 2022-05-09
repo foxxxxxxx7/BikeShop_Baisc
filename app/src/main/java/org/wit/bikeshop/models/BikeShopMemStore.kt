@@ -14,14 +14,14 @@ internal fun getId(): Long {
 creates an arraylist of BikeShopModel objects. */
 class BikeShopMemStore : BikeShopStore, AnkoLogger {
 
-    val bikes = ArrayList<BikeShopModel>()
+    val bikes = ArrayList<BikeModel>()
 
     /**
      * > This function returns a list of BikeShopModel objects
      *
      * @return A list of BikeShopModel objects
      */
-    override fun findAll(): List<BikeShopModel> {
+    override fun findAll(): List<BikeModel> {
         return bikes
     }
 
@@ -31,7 +31,7 @@ class BikeShopMemStore : BikeShopStore, AnkoLogger {
      *
      * @param bike BikeShopModel - this is the object that is being passed in to the function.
      */
-    override fun create(bike: BikeShopModel) {
+    override fun create(bike: BikeModel) {
         bike.id = getId()
         bikes.add(bike)
         logAll()
@@ -42,8 +42,8 @@ class BikeShopMemStore : BikeShopStore, AnkoLogger {
      *
      * @param bike BikeShopModel - this is the bike that is being updated.
      */
-    override fun update(bike: BikeShopModel) {
-        var foundBike: BikeShopModel? = bikes.find { p -> p.id == bike.id }
+    override fun update(bike: BikeModel) {
+        var foundBike: BikeModel? = bikes.find { p -> p.id == bike.id }
         if (foundBike != null) {
             foundBike.title = bike.title
             foundBike.size = bike.size
@@ -72,7 +72,7 @@ class BikeShopMemStore : BikeShopStore, AnkoLogger {
      *
      * @param bike BikeShopModel - this is the bike that we want to delete from the list
      */
-    override fun delete(bike: BikeShopModel) {
+    override fun delete(bike: BikeModel) {
         bikes.remove(bike)
     }
 

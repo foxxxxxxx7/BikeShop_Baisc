@@ -2,7 +2,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_bikeshop.view.*
 import kotlinx.android.synthetic.main.card_bikeshop.view.*
 import kotlinx.android.synthetic.main.card_bikeshop.view.bikeTitle
 import kotlinx.android.synthetic.main.card_bikeshop.view.bikeSize
@@ -14,18 +13,18 @@ import kotlinx.android.synthetic.main.card_bikeshop.view.bikeComment
 
 import org.wit.bikeshop.R
 import org.wit.bikeshop.helpers.readImageFromPath
-import org.wit.bikeshop.models.BikeShopModel
+import org.wit.bikeshop.models.BikeModel
 
 
 /* This class is a listener that listens for clicks on a bike */
 interface BikeListener {
-    fun onBikeClick(bike: BikeShopModel)
+    fun onBikeClick(bike: BikeModel)
 }
 
 
 /* This is the constructor for the BikeShopAdapter class. It takes in a list of bikes and a listener. */
 class BikeShopAdapter constructor(
-    private var bikes: List<BikeShopModel>,
+    private var bikes: List<BikeModel>,
     private val listener: BikeListener
 ) : RecyclerView.Adapter<BikeShopAdapter.MainHolder>() {
 
@@ -64,7 +63,7 @@ class BikeShopAdapter constructor(
     takes a BikeShopModel and a BikeListener as parameters. */
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(bike: BikeShopModel, listener: BikeListener) {
+        fun bind(bike: BikeModel, listener: BikeListener) {
             itemView.bikeTitle.text = bike.title
             itemView.bikeSize.text = bike.size
             itemView.bikeStyle.text = bike.style
