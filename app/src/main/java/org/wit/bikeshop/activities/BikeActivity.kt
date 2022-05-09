@@ -95,11 +95,11 @@ class BikeActivity : AppCompatActivity(), AnkoLogger {
         /* This is the code that is used to add a bike shop to the database. */
         btnAdd.setOnClickListener() {
             bike.title = bikeTitle.text.toString()
-            bike.size = bikeSize.selectedItemPosition.toString()
-            bike.style = bikeStyle.selectedItemPosition.toString()
-            bike.gender = bikeGender.selectedItemPosition.toString()
+            bike.size = bikeSize.selectedItem.toString()
+            bike.style = bikeStyle.selectedItem.toString()
+            bike.gender = bikeGender.selectedItem.toString()
             bike.price = bikePrice.text.toString().toDouble()
-            bike.condition = bikeCondition.selectedItemPosition.toString()
+            bike.condition = bikeCondition.selectedItem.toString()
             bike.comment = bikeComment.text.toString()
             if (bike.title.isEmpty()) {
                 toast(R.string.enter_bike_title)
@@ -142,6 +142,14 @@ class BikeActivity : AppCompatActivity(), AnkoLogger {
             showImagePicker(this, IMAGE_REQUEST)
         }
 
+    }
+
+    fun Spinner.setSpinnerText(text: String) {
+        for (i in 0 until this.adapter.count) {
+            if (this.adapter.getItem(i).toString().contains(text)) {
+                this.setSelection(i)
+            }
+        }
     }
 
 
@@ -218,14 +226,5 @@ class BikeActivity : AppCompatActivity(), AnkoLogger {
         }
         return super.onOptionsItemSelected(item)
     }
-
-    fun Spinner.setSpinnerText(text: String) {
-        for (i in 0 until this.adapter.count) {
-            if (this.adapter.getItem(i).toString().contains(text)) {
-                this.setSelection(i)
-            }
-        }
-    }
-
 
 }
