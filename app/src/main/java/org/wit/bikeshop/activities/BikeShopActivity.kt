@@ -20,6 +20,7 @@ import org.wit.bikeshop.models.Location
 
 class BikeShopActivity : AppCompatActivity(), AnkoLogger {
 
+    //val LOCATION_REQUEST2 = 2
     val LOCATION_REQUEST = 2
     val IMAGE_REQUEST = 1
     var edit = false
@@ -64,14 +65,14 @@ class BikeShopActivity : AppCompatActivity(), AnkoLogger {
         }
 
         bikeLocation2.setOnClickListener {
-            val location2 = Location(52.093074, -7.622118, 15f)
+            val location = Location(52.093074, -7.622118, 15f)
             if (bike.zoom != 0f) {
-                location2.lat = bike.lat
-                location2.lng = bike.lng
-                location2.zoom = bike.zoom
+                location.lat = bike.lat
+                location.lng = bike.lng
+                location.zoom = bike.zoom
             }
             startActivityForResult(
-                intentFor<MapsActivity>().putExtra("location", location2),
+                intentFor<MapsActivity>().putExtra("location", location),
                 LOCATION_REQUEST
             )
         }
@@ -103,7 +104,7 @@ class BikeShopActivity : AppCompatActivity(), AnkoLogger {
         }
 
         toolbarAdd.title = title
-        setSupportActionBar(toolbarAdd)
+//        setSupportActionBar(toolbarAdd)
 
         chooseImage.setOnClickListener {
             showImagePicker(this, IMAGE_REQUEST)
@@ -125,11 +126,23 @@ class BikeShopActivity : AppCompatActivity(), AnkoLogger {
             LOCATION_REQUEST -> {
                 if (data != null) {
                     val location = data.extras?.getParcelable<Location>("location")!!
+
                     bike.lat = location.lat
                     bike.lng = location.lng
                     bike.zoom = location.zoom
+
                 }
             }
+            /*LOCATION_REQUEST2 -> {
+                if (data != null) {
+                    val location2 = data.extras?.getParcelable<Location>("location2")!!
+
+                    bike.lat = location2.lat
+                    bike.lng = location2.lng
+                    bike.zoom = location2.zoom
+
+                }
+            }*/
         }
     }
 

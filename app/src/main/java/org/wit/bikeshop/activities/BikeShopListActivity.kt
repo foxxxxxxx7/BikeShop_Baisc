@@ -31,8 +31,8 @@ class BikeShopListActivity : AppCompatActivity(), BikeListener {
         loadBikes()
 
         //enable action bar and set title
-        toolbar.title = title
-        setSupportActionBar(toolbar)
+       // toolbar.title = title
+//        setSupportActionBar(toolbar)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

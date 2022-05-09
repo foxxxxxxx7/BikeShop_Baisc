@@ -10,6 +10,16 @@ import android.net.Uri
 import org.wit.bikeshop.R
 import java.io.IOException
 
+/**
+ * "Given a path to an image, return a Bitmap object."
+ *
+ * The function takes two parameters: a Context object and a String. The Context object is used to get
+ * access to the file system. The String is the path to the image
+ *
+ * @param context The context of the activity.
+ * @param path The path to the image file.
+ * @return A Bitmap object
+ */
 fun readImageFromPath(context: Context, path: String): Bitmap? {
     var bitmap: Bitmap? = null
     val uri = Uri.parse(path)
