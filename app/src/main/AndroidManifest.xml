@@ -2,8 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.wit.bikeshop">
 
+    // This is allowing the app to access the users location.
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
+
+    // This is the application tag. It is the root element of the AndroidManifest.xml file. It
+    contains
+    // subelements that declare each of the application components and has attributes that can
+    affect
+    // all the components.
     <application
         android:name=".main.MainApp"
         android:allowBackup="true"
@@ -13,22 +21,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BikeShop">
 
+        // This is the API key for the google maps.
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".activities.MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
-        <activity android:name=".activities.BikeShopActivity"></activity>
 
-        <activity android:name=".activities.BikeShopListActivity">
+        // This is declaring the activity that is the main activity of the app.
+        <activity
+            android:name=".activities.BikeShopListActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        // This is declaring the activities that are in the app.
+        <activity android:name=".activities.BikeShopActivity"/>
+        <activity android:name=".activities.MapsActivity"/>
+
     </application>
 
 </manifest>
