@@ -18,7 +18,7 @@ import org.wit.bikeshop.models.BikeModel
 
 /* This is the class declaration. It is a class called BikeShopListActivity that inherits from
 AppCompatActivity and implements BikeListener. */
-class BikeShopListActivity : AppCompatActivity(), BikeListener {
+class BikeListActivity : AppCompatActivity(), BikeListener {
 
     lateinit var app: MainApp
 
@@ -64,7 +64,7 @@ class BikeShopListActivity : AppCompatActivity(), BikeListener {
      */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.item_add -> startActivityForResult<BikeShopActivity>(0)
+            R.id.item_add -> startActivityForResult<BikeActivity>(0)
         }
         return super.onOptionsItemSelected(item)
     }
@@ -88,7 +88,7 @@ class BikeShopListActivity : AppCompatActivity(), BikeListener {
      * > The function `loadBikes()` is private, and it calls the `showBikes()` function, passing in the
      * result of the `findAll()` function, which is called on the `bikes` property of the `app` object
      */
-        startActivityForResult(intentFor<BikeShopActivity>().putExtra("bike_edit", bike), 0)
+        startActivityForResult(intentFor<BikeActivity>().putExtra("bike_edit", bike), 0)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

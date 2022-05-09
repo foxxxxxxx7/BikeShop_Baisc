@@ -28,8 +28,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.BikeShopListActivity"/>
-        <activity android:name=".activities.BikeShopActivity" />
+        <activity android:name=".activities.BikeListActivity"/>
+        <activity android:name=".activities.BikeActivity" />
         <activity android:name=".activities.MapsActivity" />
     </application>
 

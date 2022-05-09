@@ -20,7 +20,7 @@ import org.wit.bikeshop.models.Location
 
 /* This is the start of the BikeShopActivity class. It is a subclass of AppCompatActivity and
 implements AnkoLogger. It also declares some variables. */
-class BikeShopActivity : AppCompatActivity(), AnkoLogger {
+class BikeActivity : AppCompatActivity(), AnkoLogger {
 
     //val LOCATION_REQUEST2 = 2
     val LOCATION_REQUEST = 2
@@ -51,7 +51,7 @@ class BikeShopActivity : AppCompatActivity(), AnkoLogger {
             bikeSize.setText(bike.size)
             bikeStyle.setText(bike.style)
             bikeGender.setText(bike.gender)
-            bikePrice.setText(bike.price)
+            bikePrice.setText(bike.price.toString())
             bikeCondition.setText(bike.condition)
             bikeComment.setText(bike.comment)
             bikeImage.setImageBitmap(readImageFromPath(this, bike.image))
@@ -89,22 +89,37 @@ class BikeShopActivity : AppCompatActivity(), AnkoLogger {
             )
         }
 
-
-
-
-
         /* This is the code that is used to add a bike shop to the database. */
         btnAdd.setOnClickListener() {
             bike.title = bikeTitle.text.toString()
             bike.size = bikeSize.text.toString()
             bike.style = bikeStyle.text.toString()
             bike.gender = bikeGender.text.toString()
-            bike.price = bikePrice.text.toString()
+            bike.price = bikePrice.text.toString().toDouble()
             bike.condition = bikeCondition.text.toString()
             bike.comment = bikeComment.text.toString()
             if (bike.title.isEmpty()) {
                 toast(R.string.enter_bike_title)
-            } else {
+            }
+            if (bike.size.isEmpty()) {
+                toast(R.string.enter_bike_size)
+            }
+            if (bike.style.isEmpty()) {
+                toast(R.string.enter_bike_style)
+            }
+            if (bike.gender.isEmpty()) {
+                toast(R.string.enter_bike_gender)
+            }
+            if (bike.price.toString().isEmpty()) {
+                toast(R.string.enter_bike_price)
+            }
+            if (bike.condition.isEmpty()) {
+                toast(R.string.enter_bike_condition)
+            }
+            if (bike.comment.isEmpty()) {
+                toast(R.string.enter_bike_comment)
+            }
+            else {
                 if (edit) {
                     app.bikes.update(bike.copy())
                 } else {

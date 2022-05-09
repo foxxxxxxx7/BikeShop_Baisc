@@ -20,7 +20,7 @@ class SplashActivity : AppCompatActivity() {
         /* This is a handler that is used to delay the opening of the next activity by 3 seconds. */
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
-            val intent = Intent(this, BikeShopListActivity::class.java)
+            val intent = Intent(this, BikeListActivity::class.java)
             startActivity(intent)
             finish()
         }, 3000)
