@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import kotlinx.android.synthetic.main.activity_bikeshop.*
+import android.widget.Spinner
+import androidx.core.view.get
+import kotlinx.android.synthetic.main.activity_bike.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.jetbrains.anko.intentFor
@@ -34,8 +36,9 @@ class BikeActivity : AppCompatActivity(), AnkoLogger {
     implements AnkoLogger. It also declares some variables. */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_bikeshop)
+        setContentView(R.layout.activity_bike)
         app = application as MainApp
+
 
 
         /* This is checking if the intent has an extra called bike_edit. If it does, it sets the edit
@@ -48,11 +51,11 @@ class BikeActivity : AppCompatActivity(), AnkoLogger {
             edit = true
             bike = intent.extras?.getParcelable<BikeModel>("bike_edit")!!
             bikeTitle.setText(bike.title)
-            bikeSize.setText(bike.size)
-            bikeStyle.setText(bike.style)
-            bikeGender.setText(bike.gender)
+            bikeSize.setSpinnerText(bike.size)
+            bikeStyle.setSpinnerText(bike.style)
+            bikeGender.setSpinnerText(bike.gender)
             bikePrice.setText(bike.price.toString())
-            bikeCondition.setText(bike.condition)
+            bikeCondition.setSpinnerText(bike.condition)
             bikeComment.setText(bike.comment)
             bikeImage.setImageBitmap(readImageFromPath(this, bike.image))
             if (bike.image != null) {
@@ -76,27 +79,27 @@ class BikeActivity : AppCompatActivity(), AnkoLogger {
             )
         }
 
-        bikeLocation2.setOnClickListener {
-            val location = Location(52.093074, -7.622118, 15f)
-            if (bike.zoom != 0f) {
-                location.lat = bike.lat
-                location.lng = bike.lng
-                location.zoom = bike.zoom
-            }
-            startActivityForResult(
-                intentFor<MapsActivity>().putExtra("location", location),
-                LOCATION_REQUEST
-            )
-        }
+//        bikeLocation2.setOnClickListener {
+//            val location = Location(52.093074, -7.622118, 15f)
+//            if (bike.zoom != 0f) {
+//                location.lat = bike.lat
+//                location.lng = bike.lng
+//                location.zoom = bike.zoom
+//            }
+//            startActivityForResult(
+//                intentFor<MapsActivity>().putExtra("location", location),
+//                LOCATION_REQUEST
+//            )
+//        }
 
         /* This is the code that is used to add a bike shop to the database. */
         btnAdd.setOnClickListener() {
             bike.title = bikeTitle.text.toString()
-            bike.size = bikeSize.text.toString()
-            bike.style = bikeStyle.text.toString()
-            bike.gender = bikeGender.text.toString()
+            bike.size = bikeSize.selectedItemPosition.toString()
+            bike.style = bikeStyle.selectedItemPosition.toString()
+            bike.gender = bikeGender.selectedItemPosition.toString()
             bike.price = bikePrice.text.toString().toDouble()
-            bike.condition = bikeCondition.text.toString()
+            bike.condition = bikeCondition.selectedItemPosition.toString()
             bike.comment = bikeComment.text.toString()
             if (bike.title.isEmpty()) {
                 toast(R.string.enter_bike_title)
@@ -214,6 +217,14 @@ class BikeActivity : AppCompatActivity(), AnkoLogger {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    fun Spinner.setSpinnerText(text: String) {
+        for (i in 0 until this.adapter.count) {
+            if (this.adapter.getItem(i).toString().contains(text)) {
+                this.setSelection(i)
+            }
+        }
     }
 
 

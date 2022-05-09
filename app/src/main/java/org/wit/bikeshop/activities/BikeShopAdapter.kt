@@ -2,14 +2,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_bike.view.*
 import kotlinx.android.synthetic.main.card_bikeshop.view.*
 import kotlinx.android.synthetic.main.card_bikeshop.view.bikeTitle
-import kotlinx.android.synthetic.main.card_bikeshop.view.bikeSize
-import kotlinx.android.synthetic.main.card_bikeshop.view.bikeStyle
 import kotlinx.android.synthetic.main.card_bikeshop.view.bikeGender
-import kotlinx.android.synthetic.main.card_bikeshop.view.bikePrice
+import kotlinx.android.synthetic.main.card_bikeshop.view.bikeSize
 import kotlinx.android.synthetic.main.card_bikeshop.view.bikeCondition
-import kotlinx.android.synthetic.main.card_bikeshop.view.bikeComment
+import kotlinx.android.synthetic.main.card_bikeshop.view.bikeStyle
+/*import kotlinx.android.synthetic.main.card_bikeshop.view.bikePrice
+import kotlinx.android.synthetic.main.card_bikeshop.view.bikeComment*/
 
 import org.wit.bikeshop.R
 import org.wit.bikeshop.helpers.readImageFromPath
@@ -65,12 +66,10 @@ class BikeShopAdapter constructor(
 
         fun bind(bike: BikeModel, listener: BikeListener) {
             itemView.bikeTitle.text = bike.title
+            itemView.bikeGender.text = bike.gender
             itemView.bikeSize.text = bike.size
             itemView.bikeStyle.text = bike.style
-            itemView.bikeGender.text = bike.gender
-            itemView.bikePrice.text = bike.price
             itemView.bikeCondition.text = bike.condition
-            itemView.bikeComment.text = bike.comment
             itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, bike.image))
             itemView.setOnClickListener { listener.onBikeClick(bike) }
         }

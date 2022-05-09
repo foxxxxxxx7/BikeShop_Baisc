@@ -50,70 +50,53 @@
                     android:padding="8dp"
                     android:textSize="14sp" />
 
-                <EditText
-                    android:id="@+id/bikeSize"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_margin="8dp"
-                    android:autofillHints=""
-                    android:hint="@string/hint_bikeSize"
-                    android:inputType="text"
-                    android:maxLength="25"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:textSize="14sp" />
-
-                <EditText
-                    android:id="@+id/bikeStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_margin="8dp"
-                    android:autofillHints=""
-                    android:hint="@string/hint_bikeStyle"
-                    android:inputType="text"
-                    android:maxLength="25"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:textSize="14sp" />
-
-                <EditText
+                <Spinner
                     android:id="@+id/bikeGender"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_margin="8dp"
-                    android:autofillHints=""
-                    android:hint="@string/hint_bikeGender"
-                    android:inputType="text"
-                    android:maxLength="25"
-                    android:maxLines="1"
+                    android:autofillHints="@string/hint_bikeGender"
+                    android:entries="@array/genderArray"
                     android:padding="8dp"
-                    android:textSize="14sp" />
+                    android:prompt="@string/hint_bikeGender" />
+
+                <Spinner
+                    android:id="@+id/bikeSize"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_margin="8dp"
+                    android:autofillHints="@string/hint_bikeSize"
+                    android:entries="@array/sizeArray"
+                    android:padding="8dp"
+                    android:prompt="@string/hint_bikeSize" />
+
+                <Spinner
+                    android:id="@+id/bikeStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_margin="8dp"
+                    android:autofillHints="@string/hint_bikeStyle"
+                    android:entries="@array/styleArray"
+                    android:padding="8dp"
+                    android:prompt="@string/hint_bikeStyle" />
+
+                <Spinner
+                    android:id="@+id/bikeCondition"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_margin="8dp"
+                    android:autofillHints="@string/hint_bikeCondition"
+                    android:entries="@array/conditionArray"
+                    android:padding="8dp"
+                    android:prompt="@string/hint_bikeCondition" />
 
                 <EditText
                     android:id="@+id/bikePrice"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_margin="8dp"
-                    android:autofillHints=""
-                    android:hint="@string/hint_bikePrice"
-                    android:inputType="text"
-                    android:maxLength="25"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:textSize="14sp" />
-
-                <EditText
-                    android:id="@+id/bikeCondition"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_margin="8dp"
-                    android:autofillHints=""
-                    android:hint="@string/hint_bikeCondition"
-                    android:inputType="text"
-                    android:maxLength="25"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:textSize="14sp" />
+                    android:autofillHints="@string/hint_bikePrice"
+                    android:padding="8dp" />
 
                 <EditText
                     android:id="@+id/bikeComment"
@@ -163,19 +146,6 @@
                     android:paddingBottom="8dp"
                     android:stateListAnimator="@null"
                     android:text="@string/button_location"
-                    android:textColor="@color/design_default_color_on_primary"
-                    android:textSize="16sp" />
-
-                <Button
-                    android:id="@+id/bikeLocation2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:background="@color/design_default_color_secondary_variant"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
-                    android:stateListAnimator="@null"
-                    android:text="@string/button_location2"
                     android:textColor="@color/design_default_color_on_primary"
                     android:textSize="16sp" />
 
