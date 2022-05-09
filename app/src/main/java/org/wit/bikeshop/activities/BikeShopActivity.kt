@@ -18,6 +18,8 @@ import org.wit.bikeshop.main.MainApp
 import org.wit.bikeshop.models.BikeShopModel
 import org.wit.bikeshop.models.Location
 
+/* This is the start of the BikeShopActivity class. It is a subclass of AppCompatActivity and
+implements AnkoLogger. It also declares some variables. */
 class BikeShopActivity : AppCompatActivity(), AnkoLogger {
 
     //val LOCATION_REQUEST2 = 2
@@ -28,12 +30,20 @@ class BikeShopActivity : AppCompatActivity(), AnkoLogger {
     lateinit var app: MainApp
 
 
+    /* This is the start of the BikeShopActivity class. It is a subclass of AppCompatActivity and
+    implements AnkoLogger. It also declares some variables. */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bikeshop)
         app = application as MainApp
 
 
+        /* This is checking if the intent has an extra called bike_edit. If it does, it sets the edit
+        variable to true, sets the bike variable to the bike_edit extra, and sets the text of the
+        bikeTitle, bikeSize, bikeStyle, bikeGender, bikePrice, bikeCondition, bikeComment, and
+        bikeImage to the bike's title, size, style, gender, price, condition, comment, and image. It
+        also sets the text of the chooseImage to change_bike_image if the bike's image is not null.
+        It also sets the text of the btnAdd to save_bike. */
         if (intent.hasExtra("bike_edit")) {
             edit = true
             bike = intent.extras?.getParcelable<BikeShopModel>("bike_edit")!!
@@ -51,6 +61,7 @@ class BikeShopActivity : AppCompatActivity(), AnkoLogger {
             btnAdd.setText(R.string.save_bike)
         }
 
+        /* This is the code that is used to set the location of the bike shop. */
         bikeLocation.setOnClickListener {
             val location = Location(52.260727672924894, -7.106110453605653, 15f)
             if (bike.zoom != 0f) {
@@ -58,6 +69,7 @@ class BikeShopActivity : AppCompatActivity(), AnkoLogger {
                 location.lng = bike.lng
                 location.zoom = bike.zoom
             }
+        /* This is the code that is used to set the location of the bike shop. */
             startActivityForResult(
                 intentFor<MapsActivity>().putExtra("location", location),
                 LOCATION_REQUEST
@@ -81,6 +93,7 @@ class BikeShopActivity : AppCompatActivity(), AnkoLogger {
 
 
 
+        /* This is the code that is used to add a bike shop to the database. */
         btnAdd.setOnClickListener() {
             bike.title = bikeTitle.text.toString()
             bike.size = bikeSize.text.toString()
@@ -103,6 +116,7 @@ class BikeShopActivity : AppCompatActivity(), AnkoLogger {
             finish()
         }
 
+        /* This is the code that is used to add a bike shop to the database. */
         toolbarAdd.title = title
 //        setSupportActionBar(toolbarAdd)
 
@@ -113,6 +127,15 @@ class BikeShopActivity : AppCompatActivity(), AnkoLogger {
     }
 
 
+    /**
+     * The function is called when the user returns from the activity that was started with
+     * startActivityForResult()
+     *
+     * @param requestCode The request code you passed to startActivityForResult().
+     * @param resultCode The integer result code returned by the child activity through its
+     * setResult().
+     * @param data Intent? - The data returned by the activity.
+     */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         when (requestCode) {
@@ -146,12 +169,25 @@ class BikeShopActivity : AppCompatActivity(), AnkoLogger {
         }
     }
 
+    /**
+     * It inflates the menu and sets the visibility of the menu item to true.
+     *
+     * @param menu The menu to inflate.
+     * @return The superclass's onCreateOptionsMenu method is being returned.
+     */
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_bike, menu)
         if (edit && menu != null) menu.getItem(0).setVisible(true)
         return super.onCreateOptionsMenu(menu)
     }
 
+    /**
+     * When the user selects an item from the menu, if the item is the delete item, delete the bike and
+     * finish the activity. If the item is the cancel item, finish the activity
+     *
+     * @param item MenuItem - the menu item that was selected
+     * @return The superclass method is being returned.
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item?.itemId) {
             R.id.item_delete -> {

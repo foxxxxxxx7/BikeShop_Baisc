@@ -8,19 +8,28 @@ import org.jetbrains.anko.AnkoLogger
 import org.wit.bikeshop.helpers.*
 import java.util.*
 
+/* This is declaring the variables that will be used in the class. */
 val JSON_FILE = "bikes.json"
 val gsonBuilder = GsonBuilder().setPrettyPrinting().create()
 val listType = object : TypeToken<java.util.ArrayList<BikeShopModel>>() {}.type
 
+/**
+ * This function generates a random id.
+ *
+ * @return A random long value
+ */
 fun generateRandomId(): Long {
     return Random().nextLong()
 }
 
+/* This is declaring the variables that will be used in the class. */
 class BikeShopJSONStore : BikeShopStore, AnkoLogger {
 
     val context: Context
     var bikes = mutableListOf<BikeShopModel>()
 
+    /* This is the constructor for the class. It is setting the context and checking if the file
+    exists. If it does, it deserializes the file. */
     constructor (context: Context) {
         this.context = context
         if (exists(context, JSON_FILE)) {
@@ -28,10 +37,20 @@ class BikeShopJSONStore : BikeShopStore, AnkoLogger {
         }
     }
 
+    /**
+     * It returns a list of bikes.
+     *
+     * @return A list of BikeShopModel objects
+     */
     override fun findAll(): MutableList<BikeShopModel> {
         return bikes
     }
 
+    /**
+     * It creates a new bike and adds it to the list of bikes.
+     *
+     * @param bike BikeShopModel - this is the object that is being created.
+     */
     override fun create(bike: BikeShopModel) {
         bike.id = generateRandomId()
         bikes.add(bike)
@@ -39,6 +58,12 @@ class BikeShopJSONStore : BikeShopStore, AnkoLogger {
     }
 
 
+    /**
+     * The function takes a BikeShopModel object as a parameter, finds the bike in the list of bikes,
+     * updates the bike's properties, and then serializes the list of bikes
+     *
+     * @param bike BikeShopModel - this is the bike that is being updated.
+     */
     override fun update(bike: BikeShopModel) {
         val bikesList = findAll() as ArrayList<BikeShopModel>
         var foundBike: BikeShopModel? = bikesList.find { p -> p.id == bike.id }
@@ -59,16 +84,27 @@ class BikeShopJSONStore : BikeShopStore, AnkoLogger {
     }
 
 
+    /**
+     * It serializes the bikes list into a JSON string and writes it to a file.
+     */
     private fun serialize() {
         val jsonString = gsonBuilder.toJson(bikes, listType)
         write(context, JSON_FILE, jsonString)
     }
 
+    /**
+     * It reads the JSON file and converts it into a list of Bike objects.
+     */
     private fun deserialize() {
         val jsonString = read(context, JSON_FILE)
         bikes = Gson().fromJson(jsonString, listType)
     }
 
+    /**
+     * It removes the bike from the list of bikes.
+     *
+     * @param bike BikeShopModel - this is the bike that we want to delete from the list
+     */
     override fun delete(bike: BikeShopModel) {
         bikes.remove(bike)
         serialize()

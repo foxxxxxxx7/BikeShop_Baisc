@@ -17,29 +17,51 @@ import org.wit.bikeshop.helpers.readImageFromPath
 import org.wit.bikeshop.models.BikeShopModel
 
 
+/* This class is a listener that listens for clicks on a bike */
 interface BikeListener {
     fun onBikeClick(bike: BikeShopModel)
 }
 
 
+/* This is the constructor for the BikeShopAdapter class. It takes in a list of bikes and a listener. */
 class BikeShopAdapter constructor(
     private var bikes: List<BikeShopModel>,
     private val listener: BikeListener
 ) : RecyclerView.Adapter<BikeShopAdapter.MainHolder>() {
 
+    /**
+     * This function is called when the RecyclerView needs a new RecyclerView.ViewHolder of the given
+     * type to represent an item
+     *
+     * @param parent The ViewGroup into which the new View will be added after it is bound to an
+     * adapter position.
+     * @param viewType This is the type of view that will be created.
+     * @return A MainHolder object.
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         return MainHolder(
             LayoutInflater.from(parent?.context).inflate(R.layout.card_bikeshop, parent, false)
         )
     }
 
+    /**
+     * The function takes a MainHolder and an Int as parameters, and returns Unit
+     *
+     * @param holder MainHolder - this is the view holder that will be used to display the data.
+     * @param position The position of the item within the adapter's data set.
+     */
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
         val bike = bikes[holder.adapterPosition]
         holder.bind(bike, listener)
     }
 
+    /**
+     * Return the size of the bikes list.
+     */
     override fun getItemCount(): Int = bikes.size
 
+    /* The MainHolder class is a subclass of RecyclerView.ViewHolder, and it has a bind method that
+    takes a BikeShopModel and a BikeListener as parameters. */
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(bike: BikeShopModel, listener: BikeListener) {

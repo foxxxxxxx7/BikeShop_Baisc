@@ -35,6 +35,12 @@ fun readImageFromPath(context: Context, path: String): Bitmap? {
     return bitmap
 }
 
+/**
+ * It creates an intent that will open the file picker, and then it starts the activity for that intent
+ *
+ * @param parent The activity that is calling the image picker.
+ * @param id The request code that will be passed to onActivityResult()
+ */
 fun showImagePicker(parent: Activity, id: Int) {
     val intent = Intent()
     intent.type = "image/*"
@@ -44,6 +50,14 @@ fun showImagePicker(parent: Activity, id: Int) {
     parent.startActivityForResult(chooser, id)
 }
 
+/**
+ * If the result code is OK and the data is not null, then decode the bitmap from the data
+ *
+ * @param activity The activity that is calling the function.
+ * @param resultCode The result code of the activity.
+ * @param data Intent? - The intent that was used to start the activity.
+ * @return A Bitmap
+ */
 fun readImage(activity: Activity, resultCode: Int, data: Intent?): Bitmap? {
     var bitmap: Bitmap? = null
     if (resultCode == Activity.RESULT_OK && data != null && data.data != null) {

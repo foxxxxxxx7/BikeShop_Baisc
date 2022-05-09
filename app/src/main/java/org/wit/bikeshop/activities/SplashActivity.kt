@@ -14,8 +14,10 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+        /* It hides the action bar at the top of the screen. */
         supportActionBar?.hide()
 
+        /* This is a handler that is used to delay the opening of the next activity by 3 seconds. */
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
             val intent = Intent(this, BikeShopListActivity::class.java)
