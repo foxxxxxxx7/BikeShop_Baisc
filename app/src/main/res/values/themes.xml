@@ -15,6 +15,7 @@
         <item name="windowNoTitle">true</item>
 
 
+
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
@@ -23,6 +24,7 @@
         <style name="MyToolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
             <item name="android:background">@color/orange</item>
             <item name="android:textColorPrimary">@color/black</item>
+            <item name="android:statusBarColor" tools:targetApi="l">@color/orange</item>
         </style>
 
     <style name="Theme.BikeShop.Splash">

@@ -13,9 +13,6 @@
         android:roundIcon="@drawable/viking_wings_final"
         android:supportsRtl="true"
         android:theme="@style/Theme.BikeShop">
-        <activity
-            android:name=".activities.Booking"
-            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

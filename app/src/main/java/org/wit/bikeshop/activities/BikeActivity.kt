@@ -1,12 +1,13 @@
 package org.wit.bikeshop.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Spinner
-import androidx.core.view.get
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_bike.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -19,6 +20,7 @@ import org.wit.bikeshop.helpers.showImagePicker
 import org.wit.bikeshop.main.MainApp
 import org.wit.bikeshop.models.BikeModel
 import org.wit.bikeshop.models.Location
+
 
 /* This is the start of the BikeActivity class. It is a subclass of AppCompatActivity and
 implements AnkoLogger. It also declares some variables. */
