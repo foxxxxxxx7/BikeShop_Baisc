@@ -2,12 +2,12 @@
 <resources>
 
     <array name="styleArray">
-        <item>City Bike</item>
-        <item>Hybrid Bike</item>
-        <item>Mountain Bike</item>
-        <item>Road Bike</item>
-        <item>Racing Bike</item>
-        <item>Electric Bike</item>
+        <item>City</item>
+        <item>Hybrid</item>
+        <item>Mountain</item>
+        <item>Road</item>
+        <item>Racing</item>
+        <item>Electric</item>
     </array>
 
     <array name="sizeArray">
