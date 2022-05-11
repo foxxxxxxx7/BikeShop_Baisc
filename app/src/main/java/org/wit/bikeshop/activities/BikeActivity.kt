@@ -20,7 +20,7 @@ import org.wit.bikeshop.main.MainApp
 import org.wit.bikeshop.models.BikeModel
 import org.wit.bikeshop.models.Location
 
-/* This is the start of the BikeShopActivity class. It is a subclass of AppCompatActivity and
+/* This is the start of the BikeActivity class. It is a subclass of AppCompatActivity and
 implements AnkoLogger. It also declares some variables. */
 class BikeActivity : AppCompatActivity(), AnkoLogger {
 
@@ -32,7 +32,7 @@ class BikeActivity : AppCompatActivity(), AnkoLogger {
     lateinit var app: MainApp
 
 
-    /* This is the start of the BikeShopActivity class. It is a subclass of AppCompatActivity and
+    /* This is the start of the BikeActivity class. It is a subclass of AppCompatActivity and
     implements AnkoLogger. It also declares some variables. */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,7 +72,6 @@ class BikeActivity : AppCompatActivity(), AnkoLogger {
                 location.lng = bike.lng
                 location.zoom = bike.zoom
             }
-        /* This is the code that is used to set the location of the bike shop. */
             startActivityForResult(
                 intentFor<MapsActivity>().putExtra("location", location),
                 LOCATION_REQUEST
@@ -92,7 +91,7 @@ class BikeActivity : AppCompatActivity(), AnkoLogger {
 //            )
 //        }
 
-        /* This is the code that is used to add a bike shop to the database. */
+        /* This is the code that is used to add a bike to the database. */
         btnAdd.setOnClickListener() {
             bike.title = bikeTitle.text.toString()
             bike.size = bikeSize.selectedItem.toString()
@@ -133,8 +132,6 @@ class BikeActivity : AppCompatActivity(), AnkoLogger {
             setResult(AppCompatActivity.RESULT_OK)
             finish()
         }
-
-        /* This is the code that is used to add a bike shop to the database. */
         toolbarAdd.title = title
 //        setSupportActionBar(toolbarAdd)
 

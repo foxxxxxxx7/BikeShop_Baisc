@@ -96,6 +96,7 @@
                     android:layout_height="48dp"
                     android:layout_margin="8dp"
                     android:autofillHints="@string/hint_bikePrice"
+                    android:hint="@string/hint_bikePrice"
                     android:padding="8dp" />
 
                 <EditText

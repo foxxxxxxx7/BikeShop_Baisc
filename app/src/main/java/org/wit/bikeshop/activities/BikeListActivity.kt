@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_bikeshop_list.*
+import kotlinx.android.synthetic.main.activity_bike_list.*
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivityForResult
 
@@ -16,7 +16,7 @@ import org.wit.bikeshop.main.MainApp
 import org.wit.bikeshop.models.BikeModel
 
 
-/* This is the class declaration. It is a class called BikeShopListActivity that inherits from
+/* This is the class declaration. It is a class called BikeListActivity that inherits from
 AppCompatActivity and implements BikeListener. */
 class BikeListActivity : AppCompatActivity(), BikeListener {
 
@@ -24,7 +24,7 @@ class BikeListActivity : AppCompatActivity(), BikeListener {
 
     /**
      * The onCreate function is called when the activity is created. It sets the content view to the
-     * activity_bikeshop_list layout, and then calls the loadBikes function to populate the
+     * activity_bike_list layout, and then calls the loadBikes function to populate the
      * recyclerView with the bike data
      *
      * @param savedInstanceState A Bundle object containing the activity's previously saved state. If
@@ -32,7 +32,7 @@ class BikeListActivity : AppCompatActivity(), BikeListener {
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_bikeshop_list)
+        setContentView(R.layout.activity_bike_list)
         app = application as MainApp
 
         //layout and populate for display
@@ -57,7 +57,7 @@ class BikeListActivity : AppCompatActivity(), BikeListener {
     }
 
     /**
-     * When the user selects the add menu item, start the BikeShopActivity and wait for a result.
+     * When the user selects the add menu item, start the BikeActivity and wait for a result.
      *
      * @param item The menu item that was selected.
      * @return The superclass method is being returned.
@@ -70,9 +70,9 @@ class BikeListActivity : AppCompatActivity(), BikeListener {
     }
 
     /**
-     * > When a bike is clicked, start the BikeShopActivity and pass the bike object to it
+     * > When a bike is clicked, start the BikeActivity and pass the bike object to it
      *
-     * @param bike BikeShopModel - this is the bike that was clicked on
+     * @param bike BikeModel - this is the bike that was clicked on
     /**
      * > When the user returns from the AddBikeActivity, load the bikes from the database and then call
      * the superclass's onActivityResult function
@@ -98,11 +98,11 @@ class BikeListActivity : AppCompatActivity(), BikeListener {
 
 
     /**
-     * > This function takes a list of BikeShopModel objects and sets the adapter of the recyclerView
-     * to a BikeShopAdapter object, passing in the list of BikeShopModel objects and the context of the
+     * > This function takes a list of BikeModel objects and sets the adapter of the recyclerView
+     * to a BikeShopAdapter object, passing in the list of BikeModel objects and the context of the
      * activity
      *
-     * @param bikes List<BikeShopModel> - this is the list of bikes that will be displayed in the
+     * @param bikes List<BikeModel> - this is the list of bikes that will be displayed in the
      * recycler view.
      */
     private fun loadBikes() {
@@ -110,11 +110,11 @@ class BikeListActivity : AppCompatActivity(), BikeListener {
     }
 
     /**
-     * > This function takes a list of BikeShopModel objects and sets the adapter of the recyclerView
-     * to a BikeShopAdapter object, passing in the list of BikeShopModel objects and the context of the
+     * > This function takes a list of BikeModel objects and sets the adapter of the recyclerView
+     * to a BikeShopAdapter object, passing in the list of BikeModel objects and the context of the
      * activity
      *
-     * @param bikes List<BikeShopModel> - this is the list of bikes that will be displayed in the
+     * @param bikes List<BikeModel> - this is the list of bikes that will be displayed in the
      * recycler view.
      */
     fun showBikes(bikes: List<BikeModel>) {
