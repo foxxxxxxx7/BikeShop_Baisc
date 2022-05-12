@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "157023081515",
+    "project_id": "bikeshop-basic",
+    "storage_bucket": "bikeshop-basic.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:157023081515:android:297ee1d962b9ca1b7b866e",
+        "android_client_info": {
+          "package_name": "org.wit.bikeshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "157023081515-b01b20vrohcb09ld85p7u804n4e081l5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBt9X8xp_0v0wWMxn1e8XmDK3K47Q5rKJk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "157023081515-b01b20vrohcb09ld85p7u804n4e081l5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
