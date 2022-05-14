@@ -47,7 +47,6 @@ class BikeActivity : AppCompatActivity(), AnkoLogger {
         app = application as MainApp
 
 
-
         /* This is checking if the intent has an extra called bike_edit. If it does, it sets the edit
         variable to true, sets the bike variable to the bike_edit extra, and sets the text of the
         bikeTitle, bikeSize, bikeStyle, bikeGender, bikePrice, bikeCondition, bikeComment, and
@@ -127,8 +126,7 @@ class BikeActivity : AppCompatActivity(), AnkoLogger {
             }
             if (bike.comment.isEmpty()) {
                 toast(R.string.enter_bike_comment)
-            }
-            else {
+            } else {
                 if (edit) {
                     app.bikes.update(bike.copy())
                 } else {

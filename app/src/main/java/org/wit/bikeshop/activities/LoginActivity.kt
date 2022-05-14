@@ -45,13 +45,13 @@ class LoginActivity : AppCompatActivity() {
 
     */
 /**
-     * We're setting up the Google Sign In button to use the Google Sign In API, and we're telling it
-     * to use the Google Sign In API to get the user's email and ID token
-     *
-     * @param savedInstanceState If the activity is being re-initialized after previously being shut
-     * down then this Bundle contains the data it most recently supplied in
-     * onSaveInstanceState(Bundle). Note: Otherwise it is null.
-     *//*
+ * We're setting up the Google Sign In button to use the Google Sign In API, and we're telling it
+ * to use the Google Sign In API to get the user's email and ID token
+ *
+ * @param savedInstanceState If the activity is being re-initialized after previously being shut
+ * down then this Bundle contains the data it most recently supplied in
+ * onSaveInstanceState(Bundle). Note: Otherwise it is null.
+ *//*
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,14 +75,14 @@ class LoginActivity : AppCompatActivity() {
 
     */
 /**
-     * > When the user signs in with Google, we get the user's ID token from Google, and then we use
-     * that token to authenticate with Firebase
-     *
-     * @param requestCode The request code you passed to startActivityForResult().
-     * @param resultCode The integer result code returned by the child activity through its
-     * setResult().
-     * @param data Intent? - The data returned by the activity.
-     *//*
+ * > When the user signs in with Google, we get the user's ID token from Google, and then we use
+ * that token to authenticate with Firebase
+ *
+ * @param requestCode The request code you passed to startActivityForResult().
+ * @param resultCode The integer result code returned by the child activity through its
+ * setResult().
+ * @param data Intent? - The data returned by the activity.
+ *//*
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -102,8 +102,8 @@ class LoginActivity : AppCompatActivity() {
 
     */
 /**
-     * The onStart() function is called when the activity is started
-     *//*
+ * The onStart() function is called when the activity is started
+ *//*
 
     override fun onStart() {
         super.onStart()
@@ -113,11 +113,11 @@ class LoginActivity : AppCompatActivity() {
 
     */
 /**
-     * If the user is not null, navigate to the BikeListActivity
-     *
-     * @param user The user object that contains the user's email address and password.
-     * @return The user object is being returned.
-     *//*
+ * If the user is not null, navigate to the BikeListActivity
+ *
+ * @param user The user object that contains the user's email address and password.
+ * @return The user object is being returned.
+ *//*
 
     private fun updateUI(user: FirebaseUser?) {
         if(user == null) {
@@ -131,11 +131,11 @@ class LoginActivity : AppCompatActivity() {
 
     */
 /**
-     * We get the idToken from the GoogleSignInAccount object, then we use that idToken to create a
-     * GoogleAuthProvider credential, then we use that credential to sign in to Firebase
-     *
-     * @param idToken A Firebase credential.
-     *//*
+ * We get the idToken from the GoogleSignInAccount object, then we use that idToken to create a
+ * GoogleAuthProvider credential, then we use that credential to sign in to Firebase
+ *
+ * @param idToken A Firebase credential.
+ *//*
 
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)

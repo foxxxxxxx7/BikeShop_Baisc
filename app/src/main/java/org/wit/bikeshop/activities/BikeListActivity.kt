@@ -26,7 +26,9 @@ AppCompatActivity and implements BikeListener. */
 class BikeListActivity : AppCompatActivity(), BikeListener {
 
     lateinit var app: MainApp
-    private val db = FirebaseDatabase.getInstance("https://bikeshop-basic-default-rtdb.europe-west1.firebasedatabase.app/").getReference().child("bikes")
+    private val db =
+        FirebaseDatabase.getInstance("https://bikeshop-basic-default-rtdb.europe-west1.firebasedatabase.app/")
+            .getReference().child("bikes")
     private lateinit var bikelist: MutableList<BikeModel>
 
     /**
@@ -49,7 +51,7 @@ class BikeListActivity : AppCompatActivity(), BikeListener {
         getBikeList()
 
         //enable action bar and set title
-       // toolbar.title = title
+        // toolbar.title = title
 //        setSupportActionBar(toolbar)
     }
 
@@ -89,13 +91,13 @@ class BikeListActivity : AppCompatActivity(), BikeListener {
      * @param resultCode The integer result code returned by the child activity through its
      * setResult().
      * @param data The data returned from the activity.
-     */
+    */
      */
     override fun onBikeClick(bike: BikeModel) {
-    /**
-     * > The function `loadBikes()` is private, and it calls the `showBikes()` function, passing in the
-     * result of the `findAll()` function, which is called on the `bikes` property of the `app` object
-     */
+        /**
+         * > The function `loadBikes()` is private, and it calls the `showBikes()` function, passing in the
+         * result of the `findAll()` function, which is called on the `bikes` property of the `app` object
+         */
         startActivityForResult(intentFor<BikeActivity>().putExtra("bike_edit", bike), 0)
     }
 
@@ -119,16 +121,15 @@ class BikeListActivity : AppCompatActivity(), BikeListener {
     }
 
 
-
     /**
      * It gets the bikes from the database and adds them to the bikelist.
      */
-    private fun getBikeList(){
-        db.addValueEventListener(object: ValueEventListener{
+    private fun getBikeList() {
+        db.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 bikelist = mutableListOf()
-                if(snapshot.exists()){
-                    for(bikeSnap in snapshot.children){
+                if (snapshot.exists()) {
+                    for (bikeSnap in snapshot.children) {
                         val bike = bikeSnap.getValue(BikeModel::class.java)
                         bikelist.add(bike!!)
                     }

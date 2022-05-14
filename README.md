@@ -1,4 +1,4 @@
-# BikeShop_Baisc
+# BikeShop_Basic
 Robert Fox
 
 20088024
