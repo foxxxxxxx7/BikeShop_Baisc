@@ -46,7 +46,7 @@ class BikeListActivity : AppCompatActivity(), BikeListener {
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         loadBikes()
-        getBikeData()
+        getBikeList()
 
         //enable action bar and set title
        // toolbar.title = title
@@ -100,7 +100,8 @@ class BikeListActivity : AppCompatActivity(), BikeListener {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        loadBikes()
+        //loadBikes()
+        getBikeList()
         super.onActivityResult(requestCode, resultCode, data)
     }
 
@@ -122,7 +123,7 @@ class BikeListActivity : AppCompatActivity(), BikeListener {
     /**
      * It gets the bikes from the database and adds them to the bikelist.
      */
-    private fun getBikeData(){
+    private fun getBikeList(){
         db.addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 bikelist = mutableListOf()

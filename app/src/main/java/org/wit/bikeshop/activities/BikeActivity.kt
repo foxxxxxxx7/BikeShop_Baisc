@@ -20,6 +20,7 @@ import org.wit.bikeshop.helpers.showImagePicker
 import org.wit.bikeshop.main.MainApp
 import org.wit.bikeshop.models.BikeModel
 import org.wit.bikeshop.models.Location
+import java.util.*
 
 
 /* This is the start of the BikeActivity class. It is a subclass of AppCompatActivity and
@@ -32,6 +33,10 @@ class BikeActivity : AppCompatActivity(), AnkoLogger {
     var edit = false
     var bike = BikeModel()
     lateinit var app: MainApp
+
+    fun generateRandomBuildId(): Long {
+        return Random().nextLong()
+    }
 
 
     /* This is the start of the BikeActivity class. It is a subclass of AppCompatActivity and
@@ -127,6 +132,7 @@ class BikeActivity : AppCompatActivity(), AnkoLogger {
                 if (edit) {
                     app.bikes.update(bike.copy())
                 } else {
+                    bike.id = generateRandomBuildId()
                     app.bikes.create(bike.copy())
                 }
             }
