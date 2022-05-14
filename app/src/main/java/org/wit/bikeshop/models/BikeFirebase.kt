@@ -7,14 +7,14 @@ import org.jetbrains.anko.AnkoLogger
 AnkoLogger interface */
 class BikeFirebase : BikeShopStore, AnkoLogger {
     var bikes = mutableListOf<BikeModel>()
-    private val db = FirebaseDatabase.getInstance("https://bikeshop-basic-default-rtdb.europe-west1.firebasedatabase.app/").getReference()
+    private val db = FirebaseDatabase.getInstance("https://bikeshop-basic-default-rtdb.europe-west1.firebasedatabase.app/").getReference().child("bikes")
 
-    override fun findAll(): List<BikeModel> {
-        TODO("Not yet implemented")
+    override fun findAll(): MutableList<BikeModel> {
+        return bikes
     }
 
     override fun create(bike: BikeModel) {
-        TODO("Not yet implemented")
+        db.child(bike.id.toString()).setValue(bike)
     }
 
     override fun update(bike: BikeModel) {
