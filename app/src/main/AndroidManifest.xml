@@ -13,9 +13,7 @@
         android:roundIcon="@drawable/viking_wings_final"
         android:supportsRtl="true"
         android:theme="@style/Theme.BikeShop">
-        <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
+
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -25,9 +23,8 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name=".activities.SplashActivity"
-            android:exported="true"
-            android:theme="@style/Theme.BikeShop.Splash">
+            android:name=".activities.LoginActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,8 +32,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.BikeListActivity"
-            android:exported="false" />
+            android:name=".activities.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.BikeShop.Splash"/>
+        <activity
+            android:name=".activities.BikeListActivity" />
         <activity android:name=".activities.BikeActivity" />
         <activity android:name=".activities.MapsActivity" />
     </application>
