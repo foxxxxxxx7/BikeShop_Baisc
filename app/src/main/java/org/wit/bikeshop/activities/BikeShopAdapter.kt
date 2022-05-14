@@ -64,6 +64,16 @@ class BikeShopAdapter constructor(
     takes a BikeShopModel and a BikeListener as parameters. */
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        /**
+         * The function takes a BikeModel and a BikeListener as parameters, and then sets the text of
+         * the bikeTitle, bikeGender, bikeSize, bikeStyle, and bikeCondition TextViews to the values of
+         * the bike's title, gender, size, style, and condition properties, respectively. It also sets
+         * the imageIcon ImageView to the image stored in the bike's image property. Finally, it sets
+         * the onClickListener of the itemView to the onBikeClick function of the BikeListener
+         *
+         * @param bike BikeModel - this is the bike object that is being bound to the view
+         * @param listener BikeListener - this is the interface we created earlier.
+         */
         fun bind(bike: BikeModel, listener: BikeListener) {
             itemView.bikeTitle.text = bike.title
             itemView.bikeGender.text = bike.gender
