@@ -34,7 +34,7 @@ class BikeActivity : AppCompatActivity(), AnkoLogger {
     var bike = BikeModel()
     lateinit var app: MainApp
 
-    fun generateRandomBuildId(): Long {
+    fun generateRandomId(): Long {
         return Random().nextLong()
     }
 
@@ -130,7 +130,7 @@ class BikeActivity : AppCompatActivity(), AnkoLogger {
                 if (edit) {
                     app.bikes.update(bike.copy())
                 } else {
-                    bike.id = generateRandomBuildId()
+                    bike.id = generateRandomId()
                     app.bikes.create(bike.copy())
                 }
             }
@@ -147,6 +147,7 @@ class BikeActivity : AppCompatActivity(), AnkoLogger {
 
     }
 
+    /* A function that is used to set the text of a spinner. Got this from stackoverflow */
     fun Spinner.setSpinnerText(text: String) {
         for (i in 0 until this.adapter.count) {
             if (this.adapter.getItem(i).toString().contains(text)) {

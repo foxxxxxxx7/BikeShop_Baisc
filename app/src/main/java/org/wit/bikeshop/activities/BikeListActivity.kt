@@ -52,7 +52,7 @@ class BikeListActivity : AppCompatActivity(), BikeListener {
 
         //enable action bar and set title
         // toolbar.title = title
-//        setSupportActionBar(toolbar)
+       // setSupportActionBar(toolbar)
     }
 
     /**
@@ -101,6 +101,15 @@ class BikeListActivity : AppCompatActivity(), BikeListener {
         startActivityForResult(intentFor<BikeActivity>().putExtra("bike_edit", bike), 0)
     }
 
+    /**
+     * A function that is called when an activity returns a result.
+     *
+     * @param requestCode This is the request code that you passed to startActivityForResult() when you
+     * started the activity.
+     * @param resultCode The integer result code returned by the child activity through its
+     * setResult().
+     * @param data The data returned from the activity.
+     */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         //loadBikes()
         getBikeList()
