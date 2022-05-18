@@ -12,5 +12,17 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+
+    //These 2 lines of code I found on StackOverflow to resolve a problem I was having with a bug that seemed to stem from the Add button on the ListActivity
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- Tool bar styling -->
+    <style name="MyToolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:background">@color/orange</item>
+        <item name="android:textColorPrimary">@color/black</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/orange</item>
     </style>
 </resources>

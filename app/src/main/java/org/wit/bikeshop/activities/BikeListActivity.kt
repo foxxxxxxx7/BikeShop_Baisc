@@ -51,8 +51,8 @@ class BikeListActivity : AppCompatActivity(), BikeListener {
         getBikeList()
 
         //enable action bar and set title
-        // toolbar.title = title
-       // setSupportActionBar(toolbar)
+         toolbar.title = title
+        setSupportActionBar(toolbar)
     }
 
     /**

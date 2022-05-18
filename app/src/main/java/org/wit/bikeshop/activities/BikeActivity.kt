@@ -139,7 +139,7 @@ class BikeActivity : AppCompatActivity(), AnkoLogger {
             finish()
         }
         toolbarAdd.title = title
-//        setSupportActionBar(toolbarAdd)
+        setSupportActionBar(toolbarAdd)
 
         chooseImage.setOnClickListener {
             showImagePicker(this, IMAGE_REQUEST)
