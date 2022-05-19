@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "157023081515",
+    "firebase_url": "https://bikeshop-basic-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "bikeshop-basic",
     "storage_bucket": "bikeshop-basic.appspot.com"
   },

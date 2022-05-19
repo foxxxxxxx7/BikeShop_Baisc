@@ -4,9 +4,14 @@ import BikeListener
 import BikeShopAdapter
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_bike_list.*
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivityForResult
@@ -21,6 +26,10 @@ AppCompatActivity and implements BikeListener. */
 class BikeListActivity : AppCompatActivity(), BikeListener {
 
     lateinit var app: MainApp
+    private val db =
+        FirebaseDatabase.getInstance("https://bikeshop-basic-default-rtdb.europe-west1.firebasedatabase.app/")
+            .getReference().child("bikes")
+    private lateinit var bikelist: MutableList<BikeModel>
 
     /**
      * The onCreate function is called when the activity is created. It sets the content view to the
@@ -39,10 +48,11 @@ class BikeListActivity : AppCompatActivity(), BikeListener {
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         loadBikes()
+        getBikeList()
 
         //enable action bar and set title
-       // toolbar.title = title
-//        setSupportActionBar(toolbar)
+        // toolbar.title = title
+       // setSupportActionBar(toolbar)
     }
 
     /**
@@ -81,18 +91,28 @@ class BikeListActivity : AppCompatActivity(), BikeListener {
      * @param resultCode The integer result code returned by the child activity through its
      * setResult().
      * @param data The data returned from the activity.
-     */
+    */
      */
     override fun onBikeClick(bike: BikeModel) {
-    /**
-     * > The function `loadBikes()` is private, and it calls the `showBikes()` function, passing in the
-     * result of the `findAll()` function, which is called on the `bikes` property of the `app` object
-     */
+        /**
+         * > The function `loadBikes()` is private, and it calls the `showBikes()` function, passing in the
+         * result of the `findAll()` function, which is called on the `bikes` property of the `app` object
+         */
         startActivityForResult(intentFor<BikeActivity>().putExtra("bike_edit", bike), 0)
     }
 
+    /**
+     * A function that is called when an activity returns a result.
+     *
+     * @param requestCode This is the request code that you passed to startActivityForResult() when you
+     * started the activity.
+     * @param resultCode The integer result code returned by the child activity through its
+     * setResult().
+     * @param data The data returned from the activity.
+     */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        loadBikes()
+        //loadBikes()
+        getBikeList()
         super.onActivityResult(requestCode, resultCode, data)
     }
 
@@ -107,6 +127,30 @@ class BikeListActivity : AppCompatActivity(), BikeListener {
      */
     private fun loadBikes() {
         showBikes(app.bikes.findAll())
+    }
+
+
+    /**
+     * It gets the bikes from the database and adds them to the bikelist.
+     */
+    private fun getBikeList() {
+        db.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                bikelist = mutableListOf()
+                if (snapshot.exists()) {
+                    for (bikeSnap in snapshot.children) {
+                        val bike = bikeSnap.getValue(BikeModel::class.java)
+                        bikelist.add(bike!!)
+                    }
+                }
+                showBikes(bikelist)
+            }
+
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w("Failed", error.toException())
+            }
+        })
     }
 
     /**

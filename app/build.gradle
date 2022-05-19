@@ -70,8 +70,14 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
     //This is a library that allows us to use Firebase Authentication in our app.
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.6.21'
+
+    //This is a library that allows us to use Firebase Authentication in our app.
     implementation 'com.google.firebase:firebase-auth-ktx:21.0.4'
     implementation 'com.google.android.gms:play-services-auth:20.2.0'
+
+    //This is a library that allows us to use Firebase Realtime Database in our app.
+    implementation 'com.google.firebase:firebase-database-ktx:20.0.5'
 
 
     testImplementation 'junit:junit:'

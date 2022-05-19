@@ -23,20 +23,16 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name=".activities.LoginActivity"
-            android:exported="true">
+            android:name=".activities.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.BikeShop.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activities.SplashActivity"
-            android:exported="true"
-            android:theme="@style/Theme.BikeShop.Splash"/>
-        <activity
-            android:name=".activities.BikeListActivity" />
+        <activity android:name=".activities.BikeListActivity" />
         <activity android:name=".activities.BikeActivity" />
         <activity android:name=".activities.MapsActivity" />
     </application>

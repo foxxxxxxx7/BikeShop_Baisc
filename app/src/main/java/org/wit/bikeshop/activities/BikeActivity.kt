@@ -20,6 +20,7 @@ import org.wit.bikeshop.helpers.showImagePicker
 import org.wit.bikeshop.main.MainApp
 import org.wit.bikeshop.models.BikeModel
 import org.wit.bikeshop.models.Location
+import java.util.*
 
 
 /* This is the start of the BikeActivity class. It is a subclass of AppCompatActivity and
@@ -33,6 +34,10 @@ class BikeActivity : AppCompatActivity(), AnkoLogger {
     var bike = BikeModel()
     lateinit var app: MainApp
 
+    fun generateRandomId(): Long {
+        return Random().nextLong()
+    }
+
 
     /* This is the start of the BikeActivity class. It is a subclass of AppCompatActivity and
     implements AnkoLogger. It also declares some variables. */
@@ -40,7 +45,6 @@ class BikeActivity : AppCompatActivity(), AnkoLogger {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bike)
         app = application as MainApp
-
 
 
         /* This is checking if the intent has an extra called bike_edit. If it does, it sets the edit
@@ -122,11 +126,11 @@ class BikeActivity : AppCompatActivity(), AnkoLogger {
             }
             if (bike.comment.isEmpty()) {
                 toast(R.string.enter_bike_comment)
-            }
-            else {
+            } else {
                 if (edit) {
                     app.bikes.update(bike.copy())
                 } else {
+                    bike.id = generateRandomId()
                     app.bikes.create(bike.copy())
                 }
             }
@@ -143,6 +147,7 @@ class BikeActivity : AppCompatActivity(), AnkoLogger {
 
     }
 
+    /* A function that is used to set the text of a spinner. Got this from stackoverflow */
     fun Spinner.setSpinnerText(text: String) {
         for (i in 0 until this.adapter.count) {
             if (this.adapter.getItem(i).toString().contains(text)) {

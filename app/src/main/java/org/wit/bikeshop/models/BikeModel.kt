@@ -19,18 +19,20 @@ import kotlinx.android.parcel.Parcelize
  * @property {Float} zoom - The zoom level of the map.
  */
 @Parcelize
-data class BikeModel(var id: Long = 0,
-                     var title: String = "",
-                     var size: String = "",
-                     var style: String = "",
-                     var gender: String = "",
-                     var price: Double = 0.0,
-                     var condition: String = "",
-                     var comment: String = "",
-                     var image: String = "",
-                     var lat: Double = 0.0,
-                     var lng: Double = 0.0,
-                     var zoom: Float = 0f) : Parcelable
+data class BikeModel(
+    var id: Long = 0,
+    var title: String = "",
+    var size: String = "",
+    var style: String = "",
+    var gender: String = "",
+    var price: Double = 0.0,
+    var condition: String = "",
+    var comment: String = "",
+    var image: String = "",
+    var lat: Double = 0.0,
+    var lng: Double = 0.0,
+    var zoom: Float = 0f
+) : Parcelable
 
 /**
  * Location is a data class that has three properties: lat, lng, and zoom.
@@ -49,6 +51,8 @@ data class BikeModel(var id: Long = 0,
  * @property {Float} zoom - The zoom level of the map.
  */
 @Parcelize
-data class Location(var lat: Double = 0.0,
-                    var lng: Double = 0.0,
-                    var zoom: Float = 0f) : Parcelable
+data class Location(
+    var lat: Double = 0.0,
+    var lng: Double = 0.0,
+    var zoom: Float = 0f
+) : Parcelable
