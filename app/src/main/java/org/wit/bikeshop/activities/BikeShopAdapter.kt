@@ -80,6 +80,7 @@ class BikeShopAdapter constructor(
             itemView.bikeSize.text = bike.size
             itemView.bikeStyle.text = bike.style
             itemView.bikeCondition.text = bike.condition
+
             itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, bike.image))
             itemView.setOnClickListener { listener.onBikeClick(bike) }
         }
