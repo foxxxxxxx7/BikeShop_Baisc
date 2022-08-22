@@ -61,7 +61,7 @@ class BikeListActivity : AppCompatActivity(), BikeListener {
      * @param menu The menu to inflate.
      * @return The superclass's onCreateOptionsMenu method is being returned.
      */
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
     }

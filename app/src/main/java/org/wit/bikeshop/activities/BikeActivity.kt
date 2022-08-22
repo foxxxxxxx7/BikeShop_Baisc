@@ -205,7 +205,7 @@ class BikeActivity : AppCompatActivity(), AnkoLogger {
      * @param menu The menu to inflate.
      * @return The superclass's onCreateOptionsMenu method is being returned.
      */
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_bike, menu)
         if (edit && menu != null) menu.getItem(0).setVisible(true)
         return super.onCreateOptionsMenu(menu)
