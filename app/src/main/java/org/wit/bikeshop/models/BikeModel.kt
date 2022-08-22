@@ -4,16 +4,16 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 /**
- * A data class that holds the data for a bike shop.
- * @property {Long} id - The id of the bike shop.
- * @property {String} title - The title of the bike shop
+ * A data class that holds the data for a bike and it's corresponding shop.
+ * @property {Long} id - The id of the bike.
+ * @property {String} title - The title of the bike.
  * @property {String} size - The size of the bike.
  * @property {String} style - The style of the bike.
  * @property {String} gender - The gender of the bike.
  * @property {String} price - The price of the bike
  * @property {String} condition - The condition of the bike.
- * @property {String} comment - The comment the user entered when they created the bike shop.
- * @property {String} image - The image of the bike shop.
+ * @property {String} comment - The comment the user entered when they created the bike.
+ * @property {String} image - The image of the bike.
  * @property {Double} lat - The latitude of the bike shop
  * @property {Double} lng - The longitude of the bike shop
  * @property {Float} zoom - The zoom level of the map.

@@ -13,11 +13,11 @@
         app:elevation="0dip"
         app:theme="@style/MyToolbar">
 
-        <androidx.appcompat.widget.Toolbar
+        <!--<androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/orange" />
+            android:background="@color/orange" />-->
     </com.google.android.material.appbar.AppBarLayout>
 
 

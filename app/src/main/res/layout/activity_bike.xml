@@ -17,14 +17,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
+            android:background="@color/purple_700"
             app:elevation="0dip">
 
-            <androidx.appcompat.widget.Toolbar
+            <!--<androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbarAdd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/orange"
-                app:theme="@style/MyToolbar"></androidx.appcompat.widget.Toolbar>
+                android:background="@color/purple_700"
+                app:theme="@style/MyToolbar"></androidx.appcompat.widget.Toolbar>-->
         </com.google.android.material.appbar.AppBarLayout>
 
         <ScrollView
