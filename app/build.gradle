@@ -2,6 +2,7 @@ plugins {
 
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
     id 'kotlin-android-extensions'
     id 'com.google.gms.google-services'
 }
@@ -78,6 +79,14 @@ dependencies {
 
     //This is a library that allows us to use Firebase Realtime Database in our app.
     implementation 'com.google.firebase:firebase-database-ktx:20.0.5'
+
+    implementation 'com.google.firebase:firebase-storage-ktx:20.0.1'
+    implementation 'com.google.firebase:firebase-auth-ktx:21.0.7'
+    implementation platform('com.google.firebase:firebase-bom:30.2.0')
+    implementation 'com.google.firebase:firebase-storage-ktx:20.0.1'
+    implementation 'com.firebaseui:firebase-ui-storage:8.0.1'
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
+    /*kapt 'com.github.bumptech.glide:compiler:4.13.2'*/
 
 
     testImplementation 'junit:junit:'
