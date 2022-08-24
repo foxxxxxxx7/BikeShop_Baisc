@@ -7,20 +7,66 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.ImageDecoder
 import android.net.Uri
+import android.os.ParcelFileDescriptor
 import org.wit.bikeshop.R
+import java.io.FileDescriptor
 import java.io.IOException
 
 /**
- * "Given a path to an image, return a Bitmap object."
+ * "This function takes a path to an image and returns a Bitmap object."
  *
- * The function takes two parameters: a Context object and a String. The Context object is used to get
- * access to the file system. The String is the path to the image
+ * The function takes two parameters:
  *
- * @param context The context of the activity.
+ * context: Context - This is the application context.
+ * path: String - This is the path to the image.
+ * The function returns a Bitmap object
+ *
+ * @param context Context - The context of the activity.
  * @param path The path to the image file.
- * @return A Bitmap object
+ * @return A Bitmap object.
  */
+/*I was having a problem with the images only saving to the cache, I later realised it was a problem with my phone
+  denying permission to read the files on my phone, I found a solution in the docs here:
+  https://developer.android.com/training/data-storage/shared/documents-files#persist-permissions*/
+
 fun readImageFromPath(context: Context, path: String): Bitmap? {
+    var bitmap: Bitmap? = null
+    val uri = Uri.parse(path)
+    if (uri != null) {
+        try {
+            /* A way to get access to the file system.
+            * this is the crucial line needed to allow images to save */
+            val contentResolver = context.contentResolver
+
+            val takeFlags: Int = Intent.FLAG_GRANT_READ_URI_PERMISSION or
+                    Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+// Check for the freshest data.
+            contentResolver.takePersistableUriPermission(uri, takeFlags)
+            val parcelFileDescriptor = context.getContentResolver().openFileDescriptor(uri, "r")
+            val fileDescriptor = parcelFileDescriptor?.getFileDescriptor()
+            bitmap = BitmapFactory.decodeFileDescriptor(fileDescriptor)
+            parcelFileDescriptor?.close()
+        } catch (e: Exception) {
+            println(e)
+        }
+    }
+    return bitmap
+}
+
+//val contentResolver = applicationContext.contentResolver
+
+/*@Throws(IOException::class)
+ fun getBitmapFromUri(context: Context, uriIn: String): Bitmap {
+    val uri = Uri.parse(uriIn)
+    val parcelFileDescriptor: ParcelFileDescriptor =
+        context.contentResolver.openFileDescriptor(uri, "r")!!
+    val fileDescriptor: FileDescriptor = parcelFileDescriptor.fileDescriptor
+    val image: Bitmap = BitmapFactory.decodeFileDescriptor(fileDescriptor)
+    parcelFileDescriptor.close()
+    return image
+}*/
+
+/*fun readImageFromPath(context: Context, path: String): Bitmap? {
     var bitmap: Bitmap? = null
     val uri = Uri.parse(path)
     if (uri != null) {
@@ -33,7 +79,7 @@ fun readImageFromPath(context: Context, path: String): Bitmap? {
         }
     }
     return bitmap
-}
+}*/
 
 /**
  * It creates an intent that will open the file picker, and then it starts the activity for that intent

@@ -126,7 +126,8 @@ class BikeActivity : AppCompatActivity(), AnkoLogger {
             }
             if (bike.comment.isEmpty()) {
                 toast(R.string.enter_bike_comment)
-            } else {
+            }
+            else {
                 if (edit) {
                     app.bikes.update(bike.copy())
                 } else {
@@ -172,6 +173,10 @@ class BikeActivity : AppCompatActivity(), AnkoLogger {
             IMAGE_REQUEST -> {
                 if (data != null) {
                     bike.image = data.getData().toString()
+                    println("IN IMAGE")
+                    println(bike.image)
+                    println(data.data.toString())
+                    println(data.data?.encodedPath)
                     bikeImage.setImageBitmap(readImage(this, resultCode, data))
                     chooseImage.setText(R.string.change_bike_image)
                 }

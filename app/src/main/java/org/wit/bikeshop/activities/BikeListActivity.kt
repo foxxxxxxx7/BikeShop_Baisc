@@ -47,7 +47,7 @@ class BikeListActivity : AppCompatActivity(), BikeListener {
         //layout and populate for display
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        loadBikes()
+      //  loadBikes()
         getBikeList()
 
         //enable action bar and set title

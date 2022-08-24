@@ -1,3 +1,4 @@
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import kotlinx.android.synthetic.main.card_bikeshop.view.bikeComment*/
 
 import org.wit.bikeshop.R
 import org.wit.bikeshop.helpers.readImageFromPath
+//import org.wit.bikeshop.helpers.getBitmapFromUri
 import org.wit.bikeshop.models.BikeModel
 
 
@@ -80,7 +82,11 @@ class BikeShopAdapter constructor(
             itemView.bikeSize.text = bike.size
             itemView.bikeStyle.text = bike.style
             itemView.bikeCondition.text = bike.condition
+            //itemView.imageIcon.setImageBitmap(
+              //  getBitmapFromUri(itemView.context, bike.image))
             itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, bike.image))
+           println("here123")
+            println(bike.image.toString())
             itemView.setOnClickListener { listener.onBikeClick(bike) }
         }
     }
